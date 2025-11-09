@@ -1,6 +1,6 @@
 import useFetch from '../useFetch';
 import Header from "../components/Header"
-import { use, useState } from 'react';
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useParams } from 'react-router-dom';
 
@@ -38,6 +38,7 @@ const Meets = () => {
       </div>
       </div>
     {loading && <p className="fs-3 m-4">loading...</p> }
+    {error && <p className="fs-3 m-4">error</p> }
       <div className="row g-4">
     {meetData && meetData.length > 0 && (meetData.map((meet) => {
       return (
