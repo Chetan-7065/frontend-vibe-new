@@ -6,13 +6,11 @@ import { useParams } from 'react-router-dom';
 
 const Meets = () => {
   const [selectedMode, setSelectedMode] = useState("")
-  const randomNo = Math.floor(Math.random() * 5)
   const meetUrl = "https://backend-meets.vercel.app/meets"
   const meetByModeUrl = `https://backend-meets.vercel.app/meets/mode/${selectedMode}`
   const url = selectedMode  ? meetByModeUrl : meetUrl
   const {data, loading, error} = useFetch(url)
   const searchValue = useParams()
-  const [results, setResults] = useState(true)
   let meetData = []
   if(data){
     if(searchValue.searchValue){
