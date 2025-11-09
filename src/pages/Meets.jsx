@@ -1,18 +1,16 @@
 import useFetch from '../useFetch';
 import Header from "../components/Header"
-import { use, useState } from 'react';
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useParams } from 'react-router-dom';
 
 const Meets = () => {
   const [selectedMode, setSelectedMode] = useState("")
-  const randomNo = Math.floor(Math.random() * 5)
   const meetUrl = "https://backend-meets.vercel.app/meets"
   const meetByModeUrl = `https://backend-meets.vercel.app/meets/mode/${selectedMode}`
   const url = selectedMode  ? meetByModeUrl : meetUrl
   const {data, loading, error} = useFetch(url)
   const searchValue = useParams()
-  const [results, setResults] = useState(true)
   let meetData = []
   if(data){
     if(searchValue.searchValue){
@@ -40,6 +38,7 @@ const Meets = () => {
       </div>
       </div>
     {loading && <p className="fs-3 m-4">loading...</p> }
+    {error && <p className="fs-3 m-4">error</p> }
       <div className="row g-4">
     {meetData && meetData.length > 0 && (meetData.map((meet) => {
       return (
