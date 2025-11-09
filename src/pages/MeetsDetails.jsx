@@ -73,7 +73,7 @@ const MeetDetails = () => {
                         <div key={index + 1} className="row">
                         <div className="col-md-2 mb-3">
                           <div>
-                          <img className="rounded-circle" src={`${speaker.img}?crop=faces&fit=crop&h=50&w=50`} alt={speaker.name} />
+                          <img className="img-fluid rounded-circle" src={`${speaker.img}?crop=faces&fit=crop&h=50&w=50`} alt={speaker.name} />
                           </div>
                         </div>
                           <div className="col-md-8">
