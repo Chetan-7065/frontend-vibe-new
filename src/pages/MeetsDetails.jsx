@@ -7,7 +7,7 @@ const MeetDetails = () => {
   const {data, loading, error} = useFetch("https://backend-meets.vercel.app/meets")
   let meetDetails 
   if(data){
-    meetDetails = data.find((meet) => meet._id == meetID.meetID)
+    meetDetails = data.find((meet) => meet._id === meetID.meetID)
   }
   const keyRequirements = meetDetails ? meetDetails.requirements.split(", ") : []
   const keySpeakers = meetDetails ? meetDetails.speakers.split(", ") : []
@@ -27,6 +27,8 @@ const MeetDetails = () => {
     <Header/>
     <main>
     <div className="container my-2">
+    {loading && <p className="fs-3 m-4">loading...</p> }
+    {error && <p className="fs-3 m-4">error while fetching the data</p> }
       <div className="row">
       {
         meetDetails && (
@@ -54,22 +56,21 @@ const MeetDetails = () => {
               <p className="card-text text-primary-emphasis fs-3 fw-semibold">Description:</p>
               <p className="card-text text-info-emphasis fs-5">{meetDetails.description}</p>
               <p className="card-text text-primary-emphasis fs-3 fw-semibold">Key requirements:</p>
-              <p className="card-text text-info-emphasis fs-5">{keyRequirements.map((requirements) => {
+              <div className="card-text text-info-emphasis fs-5">{keyRequirements.map((requirements, index) => {
                 return(
-                  <ul >
+                  <ul key={index + 1} >
                     <li>{requirements}</li>
                   </ul>
                 ) 
-              })}</p>
-                <p className="card-text text-primary-emphasis fs-3 fw-semibold">Tags: <br /><p className=" badge text-bg-success fw-normal fs-6 rounded-pill ">{meetDetails.tags}</p></p>
+              })}</div>
+                <div className="card-text text-primary-emphasis fs-3 fw-semibold">Tags: <br /><p className=" badge text-bg-success fw-normal fs-6 rounded-pill ">{meetDetails.tags}</p></div>
               </div>
               <div className="col-md-4">
               <p className="card-text text-primary-emphasis fs-3 fw-semibold">Speakers:</p>
               <div className="card-text text-info-emphasis fs-5">
-                    {speakersObject.map((speaker) => {
+                    {speakersObject.map((speaker, index) => {
                       return(
-                        <div className="row">
-
+                        <div key={index + 1} className="row">
                         <div className="col-md-2 mb-3">
                           <div>
                           <img className="rounded-circle" src={`${speaker.img}?crop=faces&fit=crop&h=50&w=50`} alt={speaker.name} />
