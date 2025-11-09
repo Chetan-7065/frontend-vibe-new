@@ -14,7 +14,7 @@ const Meets = () => {
   let meetData = []
   if(data){
     if(searchValue.searchValue){
-     const filterData = data.filter((meet) =>  searchValue.searchValue == meet.title || searchValue.searchValue == meet.tags ? meet : "" )
+     const filterData = data.filter((meet) =>  searchValue.searchValue === meet.title || searchValue.searchValue === meet.tags ? meet : "" )
      meetData = filterData
     }else{
       meetData = data
