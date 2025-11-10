@@ -27,7 +27,7 @@ const MeetDetails = () => {
     <Header/>
     <main>
     <div className="container my-2">
-    {loading && <p className="fs-3 m-4">loading...</p> }
+     {loading && <p className="fs-3 m-4">loading...</p> }
     {error && <p className="fs-3 m-4">error while fetching the data</p> }
       <div className="row">
       {
