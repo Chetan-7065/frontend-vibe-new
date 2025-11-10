@@ -42,15 +42,19 @@ const Meets = () => {
       <div className="row g-4">
     {meetData && meetData.length > 0 && (meetData.map((meet) => {
       return (
-        <div key={meet._id} className="col-sm-4">
-          <div className="card rounded-4 overflow-hidden  border-primary" style={{maxWidth: "30rem"}}>
-              <img className="card-img-top img-fluid " src={`${meet.photos[7]}`} alt="" /> <span className="badge position-absolute top-0 start-0 text-bg-success fw-normal mt-3 ms-3 fs-6 rounded-pill ">{meet.tags  }</span>
-            <div className="card-body p-4">
+        <div key={meet._id} className="col-sm-4 mb-4">
+          <div className="card rounded-4 overflow-hidden  border-primary h-100 d-flex flex-column" style={{maxWidth: "30rem"}}>
+            <div className="card-img-container" style={{"height": "200px", "overflow": "hidden"}} >
+              <img className="card-img-top img-fluid w-100 h-100" src={`${meet.photos[7]}`} alt="" /> <span className="badge position-absolute top-0 start-0 text-bg-success fw-normal mt-3 ms-3 fs-6 rounded-pill ">{meet.mode}</span>
+            </div>
+            <div className="card-body p-4 d-flex flex-column flex-grow-1">
               <h5 className="card-title text-primary-emphasis">{meet.title}</h5>
-              <p className="card-text text-info-emphasis fw-normal "><span className="bi bi-clock">  {meet.startTime} - {meet.endTime}</span></p>
-              <p className="card-text bi bi-calendar-event text-info-emphasis fw-normal" > {meet.date}</p> 
-              <p className="card-text bi bi-geo-alt text-info-emphasis fw-normal">  {meet.address}</p>
+              <p className="card-text text-info-emphasis fw-normal mb-2 "><span className="bi bi-clock">  {meet.startTime} - {meet.endTime}</span></p>
+              <p className="card-text bi bi-calendar-event text-info-emphasis fw-normal mb-2" > {meet.date}</p> 
+              <p className="card-text bi bi-geo-alt text-info-emphasis fw-normal mb-2">  {meet.address}</p>
+              <div className="mt-auto">         
               <Link className="btn btn-primary" to={`/meets/${meet._id}`}>View details</Link>
+              </div>
             </div>
           </div>
         </div>

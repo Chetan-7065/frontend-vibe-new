@@ -26,8 +26,6 @@ const MeetDetails = () => {
     <>
     <Header/>
     <main>
-     {loading && <p className="fs-3 m-4">loading...</p> }
-    {error && <p className="fs-3 m-4">error while fetching the data</p> }
     <div className="container my-2">
     {loading && <p className="fs-3 m-4">loading...</p> }
     {error && <p className="fs-3 m-4">error while fetching the data</p> }
@@ -65,7 +63,7 @@ const MeetDetails = () => {
                   </ul>
                 ) 
               })}</div>
-                <div className="card-text text-primary-emphasis fs-3 fw-semibold">Tags: <br /><p className=" badge text-bg-success fw-normal fs-6 rounded-pill ">{meetDetails.tags}</p></div>
+                <div className="card-text text-primary-emphasis fs-3 fw-semibold">Tags: <br /><p className=" badge text-bg-success fw-normal fs-6 rounded-pill ">{meetDetails.mode}</p></div>
               </div>
               <div className="col-md-4">
               <p className="card-text text-primary-emphasis fs-3 fw-semibold">Speakers:</p>
@@ -75,7 +73,7 @@ const MeetDetails = () => {
                         <div key={index + 1} className="row">
                         <div className="col-md-2 mb-3">
                           <div>
-                          <img className="rounded-circle" src={`${speaker.img}?crop=faces&fit=crop&h=50&w=50`} alt={speaker.name} />
+                          <img className="img-fluid rounded-circle" src={`${speaker.img}?crop=faces&fit=crop&h=50&w=50`} alt={speaker.name} />
                           </div>
                         </div>
                           <div className="col-md-8">
